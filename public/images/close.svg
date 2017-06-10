@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height = "20px"  width = "20px">
+	<g transform="scale(0.065)">
+		<line x1="100" y1="100" x2="300" y2="300" stroke="gray" stroke-width="22"  />
+		<line x1="100" y1="300" x2="300" y2="100" stroke="gray" stroke-width="22"  />
+	</g>
+</svg>
