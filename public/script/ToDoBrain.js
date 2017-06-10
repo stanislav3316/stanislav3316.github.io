@@ -178,10 +178,15 @@ var addNewTask = {
             return;
 
         var toDoList = document.getElementsByClassName('todos-list')[0];
-        toDoList.appendChild(this.getTemplate(text));
+        var newElement = this.getTemplate(text);
+        toDoList.appendChild(newElement);
         field.value = '';
         tasksLeft++;
         updateTasksLeftCounter();
+
+        if (filterMode === 'completed') {
+            newElement.style.display = 'none';
+        }
     },
     
     getTemplate: function (textValue) {
