@@ -2,6 +2,7 @@
  * Created by iters on 6/10/17.
  */
 var tasksLeft = 0;
+var filterMode = 'all';
 
 var addDefaultEvents = {
     handleEvent: function() {
@@ -28,6 +29,7 @@ var addDefaultEvents = {
 
 var allBtnEvent = {
     handleEvent: function () {
+        filterMode = 'all';
         clearStyleOnButtons();
         var allBtn = document.querySelector("[data-filter='all']");
         allBtn.classList.add('__active');
@@ -44,6 +46,7 @@ var allBtnEvent = {
 
 var activeBtnEvent = {
     handleEvent: function () {
+        filterMode = 'active';
         clearStyleOnButtons();
         var activeBtn = document.querySelector("[data-filter='active']");
         activeBtn.classList.add('__active');
@@ -64,6 +67,7 @@ var activeBtnEvent = {
 
 var completedBtnEvent = {
     handleEvent: function () {
+        filterMode = 'completed';
         clearStyleOnButtons();
         var completedBtn = document.querySelector("[data-filter='completed']");
         completedBtn.classList.add('__active');
@@ -116,9 +120,17 @@ var initOldTasksWithEvents = {
                 if (this.checked) {
                     textElement.classList.add('__ready');
                     tasksLeft--;
+
+                    if(filterMode === 'active') {
+                        slide.style.display = 'none';
+                    }
                 } else {
                     textElement.classList.remove('__ready');
                     tasksLeft++;
+
+                    if(filterMode === 'completed') {
+                        slide.style.display = 'none';
+                    }
                 }
                 updateTasksLeftCounter();
             });
@@ -189,9 +201,17 @@ var addNewTask = {
             if (this.checked) {
                 textElement.classList.add('__ready');
                 tasksLeft--;
+
+                if(filterMode === 'active') {
+                    item.style.display = 'none';
+                }
             } else {
                 textElement.classList.remove('__ready');
                 tasksLeft++;
+
+                if(filterMode === 'completed') {
+                    item.style.display = 'none';
+                }
             }
             updateTasksLeftCounter();
         });
