@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height = "35px"  width = "35px">
-	<g transform="scale(0.11) translate(-50 -70)">
-		<line x1="186" y1="300" x2="280" y2="140" stroke="#5dc2af" stroke-width="18"  />
-		<line x1="195" y1="300" x2="130" y2="220" stroke="#5dc2af" stroke-width="18"  />
-	</g>
-</svg>
