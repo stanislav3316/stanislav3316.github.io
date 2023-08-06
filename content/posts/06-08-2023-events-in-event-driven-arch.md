@@ -1,7 +1,7 @@
 ---
 title: "Events in Event-Driver Architecture"
 date: 2023-08-06T09:03:20-08:00
-draft: true
+draft: false
 ---
 ## Introduction
 
