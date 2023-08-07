@@ -67,6 +67,15 @@ It's important to have unified structure with evolution, changeability possibili
 7. [optional] "meta.parent_event_id" - parent identificator for ordering
 
 
+---
+
+Anti-corruption layer
+
+![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/4.jpg)
+
+When you got events from external system, different bounded context or send events outside it's important not to send events as is.
+Instead, use different event's models not internal ones (to make system flexible and robust).
+
 ## Conclusion
 
 - carefully approach the design of events
