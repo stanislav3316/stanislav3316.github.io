@@ -13,20 +13,25 @@ There are event types:
 
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/1.jpeg)
 
+The main reason for CUD events is streaming data through the system to have different local data replicas for local usage (user data, as example, in warehouse service). It helps us to eliminate network calls and use local DB instead.
+
  - Domain events (Business events, related to a specific domain)
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/2.jpg)
 
+The domain events are about business processes and triggers. They help us to build coordination between services and accomplish business goals.
 
 
 ----
 
-We have different types of events, but they should be under some constraints and have rigit structure:
- - in past tense (ReportFilled, CardExpired, ....)
+There are different types of events and all of them should be under some constraints and follow these rules:
+ - name in past tense (ReportFilled, CardExpired, ....)
  - immutable
  - should have schema and version (evolving)
  - have separated data (payload) and meta (created_at, event_id, ...) blocks of a event (do not mix it)
 
 
+
+It's important to have unified structure with evolution, changeability possibilities. And it's always better to enrich events with meta information along with data or payload block. Meta block helps us to manage, evolve events and handle them in idempotency and the right way.
 ```
 {
   "data | payload": {...},
@@ -55,3 +60,5 @@ We have different types of events, but they should be under some constraints and
 6. "meta.event_id" - unique event identificator for idempotency
 7. [optional] "meta.parent_event_id" - parent identificator for ordering
 
+
+## Conclusion
