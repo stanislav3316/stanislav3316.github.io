@@ -3,8 +3,8 @@ title: "Events in Event-Driver Architecture"
 date: 2023-08-06T09:03:20-08:00
 draft: false
 ---
-## Introduction
 
+### Event types
 Building Event-Driven or Async architecture it's important to pay a lot of attention to events in the system.
 They are core elements of data flows, and should be designed properly and with care. Any futrher refactoring of these events will be painful and difficult - strict structure is our helper.
 
@@ -22,12 +22,14 @@ The domain events are about business processes and triggers. They help us to bui
 
 ---
 
+### Delta or full payload
 Events can carry the whole payload or delta only. The right choice depends on business requirements and cases. Moreover, full event's payload helps us to re-play events fro new services, and something not to store local state.
 
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/3.jpg)
 
 ---
 
+### Structure and event's rules
 There are different types of events and all of them should be under some constraints and follow these rules:
  - name in past tense (ReportFilled, CardExpired, ....)
  - immutable
@@ -69,15 +71,19 @@ It's important to have unified structure with evolution, changeability possibili
 
 ---
 
-Anti-corruption layer
-
+### Anti-corruption layer
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/4.jpg)
 
 When you got events from external system, different bounded context or send events outside it's important not to send events as is.
 Instead, use different event's models not internal ones (to make system flexible and robust).
 
 ## Conclusion
-
 - carefully approach the design of events
 - think about evolvability
 - learn more about your domain and bounded context
+
+
+## Links
+1. [Cloud Events Specification](https://cloudevents.io)
+2. [Anti-corruption Layer pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer)
+3. [Event-Driven](https://martinfowler.com/articles/201701-event-driven.html)
