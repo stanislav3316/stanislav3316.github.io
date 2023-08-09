@@ -5,3 +5,6 @@ theme = 'PaperMod'
 
 [params]
   comments = true
+  ShowShareButtons = true
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
