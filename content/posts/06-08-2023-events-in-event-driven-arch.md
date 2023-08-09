@@ -88,7 +88,7 @@ Instead, use different event's models not internal ones (to make system flexible
 - learn more about business/technical requirements and constraints
 
 
-## Links
+## Further Reading
 1. [Cloud Events Specification](https://cloudevents.io)
 2. [Anti-corruption Layer pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer)
 3. [Event-Driven](https://martinfowler.com/articles/201701-event-driven.html)
