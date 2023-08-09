@@ -2,3 +2,6 @@ baseURL = 'https://stanislav3316.github.io/'
 languageCode = 'en-us'
 title = 'Tech blog'
 theme = 'PaperMod'
+
+[params]
+  comments = true
