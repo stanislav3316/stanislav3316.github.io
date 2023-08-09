@@ -4,6 +4,10 @@ date: 2023-08-06T09:03:20-08:00
 draft: false
 ---
 
+> **ℹ️ disclaimer**
+>
+> This article represented my mental model at the time of writing, but I’m always iterating on it.
+
 ### Event types
 Building Event-Driven or Asynchronous architecture it's important to pay a lot of attention to events in the system.
 They are core elements of data flows, and should be designed properly and with care. Any futrher refactoring of these events will be painful and difficult - strict structure is our helper.
