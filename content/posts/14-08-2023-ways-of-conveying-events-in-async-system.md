@@ -1,7 +1,7 @@
 ---
 title: "Ways of conveying/transferring events in Asynchronous systems"
 date: 2023-08-14T09:03:20-08:00
-draft: true
+draft: false
 ---
 
 > **ℹ️ disclaimer**
@@ -12,26 +12,23 @@ draft: true
 
 1. Queus (RabbitMQ, ...)
 
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/2/1.jpeg)
-
+![!Example](/static/2/1.jpg)
 
 2. Messages log (Kafka, ...)
 
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/2/2.jpeg)
+![!Example](/static/2/2.jpg)
 
 3. Webhooks (Rest)
 
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/2/3.jpeg)
-
+![!Example](/static/2/3.jpg)
 
 4. Polling (Rest)
 
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/2/4.jpeg)
+![!Example](/static/2/4.jpg)
 
+5. WS / SSE / HTTP/2.0 (streaming)
 
-5. WS / SSE / HTTP/2.0
-
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/2/5.jpeg)
+![!Example](/static/2/5.jpg)
 
 
 ## Conclusion
