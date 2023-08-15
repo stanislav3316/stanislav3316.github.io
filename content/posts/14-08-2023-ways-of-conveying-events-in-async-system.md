@@ -12,24 +12,26 @@ draft: true
 
 1. Queus (RabbitMQ, ...)
 
-![!Example](/static/2/1.jpg)
+![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/1.jpg)
 
 
 2. Messages log (Kafka, ...)
 
-![!Example](/static/2/2.jpg)
+![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/2.jpg)
 
 3. Webhooks (Rest)
 
-![!Example](/static/2/3.jpg)
+![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/3.jpg)
+
 
 4. Polling (Rest)
 
-![!Example](/static/2/4.jpg)
+![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/4.jpg)
 
-5. WS / SSE / HTTP/2.0 (streaming)
 
-![!Example](/static/2/5.jpg)
+5. WS / SSE / HTTP/2.0
+
+![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/5.jpg)
 
 
 ## Conclusion
