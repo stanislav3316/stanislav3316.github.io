@@ -52,6 +52,7 @@ In Webhooks case, service sends events on specified/registered REST endpoint so 
 Pros:
 - simple publish-subscribe pattern
 - good integration pattern for external systems
+- no DevOps activities
 
 Cons:
 - netfork and external service outage cases should be covered with long retries
@@ -62,7 +63,18 @@ Cons:
 4. Polling (Rest)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/4.jpg)
-+-
+
+In polling case, external system or app periodically calls GET /events endpoint to reveice latest events.
+
+Pros:
+- simple publish-subscribe pattern
+- good integration pattern for external systems
+- no DevOps activities
+
+Cons:
+- netfork and external service outage cases should be covered with long retries
+- high latency approach
+- no way how to re-process old events
 
 5. WS / SSE / HTTP/2.0
 
