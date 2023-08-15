@@ -22,14 +22,26 @@ Pros:
 - simple publish-subscribe pattern
 
 Cons:
-- no way how to reprocess old events (they are deleting after being processed)
-- more difficult to organise retry logic
-- more difficult consumer scaling logic (to read events from one queue and shard event by some criteria like entity ID)
+- no way how to re-process old events (they are deleting after being processed)
+- difficult to organise retry logic
+- difficult consumer scaling logic (to read events from one queue and shard event by some criteria like entity ID)
 
 2. Messages log (Kafka, ...)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/2.jpg)
-+-
+
+In Topics case, server sends events to broker and broker persists events in specified topics (regarding kafka, in specified partitions too based on partition key).
+
+Pros:
+- events can be easily re-processed (all events are persisted)
+- data inside topics can be partitioned using partition key (kafka partitions)
+- simple consumer scaling logic (based on assigment topic's partitons to different node's instances)
+
+Cons:
+- difficult to organise retry logic (but processing can be stopped until failure would be fixed)
+- persist all received events (volume)
+- partition key should be carefully be chosen
+- more sophisticated settings
 
 3. Webhooks (Rest)
 
