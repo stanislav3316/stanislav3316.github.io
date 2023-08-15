@@ -1,5 +1,5 @@
 ---
-title: "Ways of conveying/transferring events in Asynchronous systems"
+title: "Ways of conveying/transferring events in Asynchronous Systems"
 date: 2023-08-14T09:03:20-08:00
 draft: true
 ---
