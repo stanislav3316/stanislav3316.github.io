@@ -79,10 +79,22 @@ Cons:
 5. WS / SSE / HTTP/2.0
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/5.jpg)
-+-
+
+In WS / SSE / HTTP/2.0 case, external system or app established long living connections to receive events stream.
+
+Pros:
+- low latency approach
+- no DevOps activities
+
+Cons:
+- you have to think over acknowledge event's logic (guarantee delivery)
+- you have to think over ping/pong messages so that conection could be closed in case of inactivity for long time
+- difficult to organise retry logic
+- difficult consumer scaling logic
 
 ## Conclusion
 each variant is a trade-off, consider you devops environment, expertise and domain constraints to make right choice. 
 (+ infractructure as code)
+
 ## Further Reading
 1. 
