@@ -46,7 +46,18 @@ Cons:
 3. Webhooks (Rest)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/3.jpg)
-+-
+
+In Webhooks case, service sends events on specified/registered REST endpoint so that app could process them.
+
+Pros:
+- simple publish-subscribe pattern
+- good integration pattern for external systems
+
+Cons:
+- netfork and external service outage cases should be covered with long retries
+- high latency approach
+- you have to implement callback URL registering / updating logic for external systems
+- no way how to re-process old events
 
 4. Polling (Rest)
 
