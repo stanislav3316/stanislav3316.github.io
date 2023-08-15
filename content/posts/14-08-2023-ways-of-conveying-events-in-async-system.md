@@ -1,7 +1,7 @@
 ---
 title: "Ways of conveying/transferring events in Asynchronous systems"
 date: 2023-08-14T09:03:20-08:00
-draft: false
+draft: true
 ---
 
 > **ℹ️ disclaimer**
@@ -13,6 +13,7 @@ draft: false
 1. Queus (RabbitMQ, ...)
 
 ![!Example](/static/2/1.jpg)
+
 
 2. Messages log (Kafka, ...)
 

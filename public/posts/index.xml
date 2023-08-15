@@ -15,7 +15,7 @@
       <guid>https://stanislav3316.github.io/posts/14-08-2023-ways-of-conveying-events-in-async-system/</guid>
       <description> ℹ️ disclaimer
 This article represented my mental model at the time of writing, but I’m always iterating on it.
-Ways of conveying/transferring events Queus (RabbitMQ, &amp;hellip;) Messages log (Kafka, &amp;hellip;) Webhooks (Rest) Polling (Rest) WS / SSE / HTTP/2.0 Conclusion each variant is a trade-off, consider you devops environment, expertise and domain constraints to make right choice.
+Ways of conveying/transferring events Queus (RabbitMQ, &amp;hellip;) Messages log (Kafka, &amp;hellip;) Webhooks (Rest) Polling (Rest) WS / SSE / HTTP/2.0 (streaming) Conclusion each variant is a trade-off, consider you devops environment, expertise and domain constraints to make right choice.
 Further Reading </description>
     </item>
     
