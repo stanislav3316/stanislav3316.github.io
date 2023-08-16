@@ -57,7 +57,7 @@ Pros:
 - no DevOps activities
 
 Cons:
-- netfork and external service outage cases should be covered with long retries
+- network and external service outage cases should be covered with long retries
 - high latency approach
 - you have to implement callback URL registering / updating logic for external systems
 - no way how to re-process old events
@@ -99,4 +99,5 @@ Each option has trade-offs to consider in you architecture and domain.
 So that you could make right choice make sure you think over you DevOps environment, team's  expertise, business and domain restrictions.
 
 ## Further Reading
-1. 
+1. [Events in Event-Driver Architecture](https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/)
+2. [Publisher-Subscriber pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/publisher-subscriber)
