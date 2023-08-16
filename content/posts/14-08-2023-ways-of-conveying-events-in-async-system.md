@@ -1,7 +1,7 @@
 ---
 title: "Ways of conveying/transferring events in Asynchronous Systems"
 date: 2023-08-14T09:03:20-08:00
-draft: true
+draft: false
 ---
 
 > **ℹ️ disclaimer**
@@ -18,7 +18,7 @@ In queues case, service sends events to queue broker and broker can send events 
 > [consider use insrastructure-as-code pattern to achieve maintainability and simplicity]
 
 Pros:
-- event is in queue until app's consumer processed it (queue doesn't persist events when they ware already processed)
+- event is in queue until app's consumer processed it (queue doesn't persist events when they were already processed)
 - low latency approach
 - simple publish-subscribe pattern
 
@@ -49,7 +49,7 @@ Cons:
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/3.jpg)
 
-In Webhooks case, service sends events on specified/registered REST endpoint so that app could process them.
+In Webhooks case, service sends events on specified/registered REST endpoint, so that app could process them.
 
 Pros:
 - simple publish-subscribe pattern
@@ -66,7 +66,7 @@ Cons:
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/4.jpg)
 
-In polling case, external system or app periodically calls GET /events endpoint to reveice latest events.
+In polling case, external system or app periodically calls GET /events endpoint to receive the latest events.
 
 Pros:
 - simple publish-subscribe pattern
@@ -96,7 +96,7 @@ Cons:
 
 ## Conclusion
 Each option has trade-offs to consider in you architecture and domain.
-So that you could make right choice make sure you think over you DevOps environment, team's  expertise, business and domain restrictions.
+So that you could make right choice, make sure you think over you DevOps environment, team's  expertise, business and domain restrictions.
 
 ## Further Reading
 1. [Events in Event-Driver Architecture](https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/)
