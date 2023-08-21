@@ -8,7 +8,7 @@ draft: false
 >
 > This article represented my mental model at the time of writing, but I’m always iterating on it.
 
-### Events communication in Event-Driver architecture
+### Events communication in Event-Driven architecture
 
 1. Queus (RabbitMQ, ...)
 
