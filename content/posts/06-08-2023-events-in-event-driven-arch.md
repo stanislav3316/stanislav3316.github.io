@@ -1,5 +1,5 @@
 ---
-title: "Events types in Event-Driven architecture"
+title: "Events in Event-Driven architecture"
 date: 2023-08-06T09:03:20-08:00
 draft: false
 ---
