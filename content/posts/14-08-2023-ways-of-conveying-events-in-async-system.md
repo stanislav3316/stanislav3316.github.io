@@ -1,5 +1,5 @@
 ---
-title: "Ways of conveying/transferring events in Asynchronous Systems"
+title: "Events communication in Event-Driven architecture"
 date: 2023-08-14T09:03:20-08:00
 draft: false
 ---
@@ -8,7 +8,7 @@ draft: false
 >
 > This article represented my mental model at the time of writing, but I’m always iterating on it.
 
-### Ways of conveying/transferring events
+### Events communication in Event-Driver architecture
 
 1. Queus (RabbitMQ, ...)
 
