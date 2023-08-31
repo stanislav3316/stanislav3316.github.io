@@ -15,7 +15,7 @@ draft: false
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/1.jpg)
 
 In queues case, service sends events to queue broker and broker can send events to all binded queus (fanous), or to only one business process queue.
-> [consider use insrastructure-as-code pattern to achieve maintainability and simplicity]
+> consider use insrastructure-as-code pattern to achieve maintainability and simplicity
 
 Pros:
 - event is in queue until app's consumer processed it (queue doesn't persist events when they were already processed)
@@ -32,7 +32,7 @@ Cons:
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/2.jpg)
 
 In Topics case, server sends events to broker and broker persists events in specified topics (regarding kafka, in specified partitions too based on partition key).
-> [consider use insrastructure-as-code pattern to achieve maintainability and simplicity]
+> consider use insrastructure-as-code pattern to achieve maintainability and simplicity
 
 Pros:
 - events can be easily re-processed (all events are persisted)
