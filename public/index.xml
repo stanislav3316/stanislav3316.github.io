@@ -8,19 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 14 Aug 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ways of conveying/transferring events in Asynchronous systems</title>
+      <title>Events communication in Event-Driven architecture</title>
       <link>https://stanislav3316.github.io/posts/14-08-2023-ways-of-conveying-events-in-async-system/</link>
       <pubDate>Mon, 14 Aug 2023 09:03:20 -0800</pubDate>
       
       <guid>https://stanislav3316.github.io/posts/14-08-2023-ways-of-conveying-events-in-async-system/</guid>
-      <description> ℹ️ disclaimer
+      <description>ℹ️ disclaimer
 This article represented my mental model at the time of writing, but I’m always iterating on it.
-Ways of conveying/transferring events Queus (RabbitMQ, &amp;hellip;) Messages log (Kafka, &amp;hellip;) Webhooks (Rest) Polling (Rest) WS / SSE / HTTP/2.0 Conclusion each variant is a trade-off, consider you devops environment, expertise and domain constraints to make right choice.
-Further Reading </description>
+Events communication in Event-Driven architecture Queus (RabbitMQ, &amp;hellip;) In queues case, service sends events to queue broker and broker can send events to all binded queus (fanous), or to only one business process queue.
+consider use insrastructure-as-code pattern to achieve maintainability and simplicity
+Pros:
+event is in queue until app&amp;rsquo;s consumer processed it (queue doesn&amp;rsquo;t persist events when they were already processed) low latency approach simple publish-subscribe pattern Cons:</description>
     </item>
     
     <item>
-      <title>Events in Event-Driver Architecture</title>
+      <title>Events in Event-Driven architecture</title>
       <link>https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/</link>
       <pubDate>Sun, 06 Aug 2023 09:03:20 -0800</pubDate>
       
