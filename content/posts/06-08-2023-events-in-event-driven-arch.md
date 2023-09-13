@@ -28,6 +28,7 @@ CUD events carry information about changes of the entities (aggregates) in the s
 The main reason for CUD events is streaming data through the system to have different local data replicas for local usage. It helps us to eliminate network calls and use local DB instead (warehouse can access user's data locally).
 
 ### Delta or full payload for CDC events
+
 Events can carry the whole payload or delta only (changed parts only). The right choice depends on business/technical requirements and cases. Moreover, full event's payload helps us to re-play events for new services, and sometimes not to store local state because full state is in every event you have to work with.
 
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/3.jpg)
@@ -47,47 +48,46 @@ Notification events carry only information about event type and how to access th
 It helps to get the latest information using provided link and may require authorization mechanisms to access the payload (for external systems, as example).
 
 ## Structure and event's rules
-There are different types of events and all of them should be under constraints and follow these rules:
+
+There are different types of events and all of them should stick to these constraints:
  - name in past tense (ReportFilled, CardExpired, ....)
  - immutable
- - should have schema and version (evolving)
+ - should have schema and version (to have evolving possibility)
  - have separated data (payload) and meta (created_at, event_id, ...) blocks of a event (do not mix it)
 
-(To break these rules you should fully understand you business domain and own bounded context where are events)
+> To break these rules you should fully understand you business domain, teams communications map and risks)
 
+It's always important to have unified structure to keep up with evolution, changeability possibilities. So, it's better to enrich events with `meta` information along with `payload` block. `Meta` block helps us to manage, evolve events and handle them in idempotent way.
 
-It's important to have unified structure with evolution, changeability possibilities. So, it's always better to enrich events with meta information along with data or payload block. Meta block helps us to manage, evolve events and handle them in idempotency and the right way.
-
-```
+{{< highlight "linenos=table" >}}
 {
   "payload": {...},
   "meta": {
+    "event_id": "",
     "created_at": ...,
-    # or schema_id as ref
     "schema": {
       "name": "...",
       "version": "..."
     },
     "trace_id": "",
     "owner_id": "",
-    "event_id": "",
     "parent_event_id": "...",
     ...
   }
 }
-```
-
+{{< /highlight >}}
 
 1. "payload" - carries event's information about what happened in the system (this block is versioning using "meta.schema")
-2. "meta.created_at" - time when event was created
-3. "meta.schema" or "meta.schema_id" - schema of the data (payload) block
-4. [optional] "meta.trace_id" - for tracing (Jaeger, ...)
-5. [optional] "meta.owner_id" - the owner of the event
-6. "meta.event_id" - unique event identificator for idempotency
+2. "meta.event_id" - unique event identificator for idempotency
+3. "meta.created_at" - time when event was created
+4. "meta.schema" or "meta.schema_id" - schema of the `payload`
+5. [optional] "meta.trace_id" - for tracing (Jaeger, ...)
+6. [optional] "meta.owner_id" - the owner of the event
 7. [optional] "meta.parent_event_id" - parent identificator for ordering or chains
-
+8. ...
 
 ## Anti-corruption layer
+
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/4.jpg)
 
 When you got events from external system, different bounded context or send events outside it's important not to send events as is.
