@@ -8,7 +8,7 @@ draft: false
 >
 > This article represented my mental model at the time of writing, but I’m always iterating on it.
 
-### Delivery guarantee for events
+## Delivery guarantee for events
 
 When application saves some information about entity to data store and then propogates this changes to a broker (RabbitMQ, Kafka, ...) there are two transactions:
 1. between application and data store

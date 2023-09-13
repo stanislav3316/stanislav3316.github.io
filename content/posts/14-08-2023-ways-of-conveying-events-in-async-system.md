@@ -8,9 +8,9 @@ draft: false
 >
 > This article represented my mental model at the time of writing, but I’m always iterating on it.
 
-### Events communication in Event-Driven architecture
+## Events communication in Event-Driven architecture
 
-1. Queus (RabbitMQ, ...)
+### 1. Queus (RabbitMQ, ...)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/1.jpg)
 
@@ -27,7 +27,7 @@ Cons:
 - difficult to organise retry logic
 - difficult consumer scaling logic (to read events from one queue and shard event by some criteria like entity ID)
 
-2. Messages log (Kafka, ...)
+### 2. Messages log (Kafka, ...)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/2.jpg)
 
@@ -45,7 +45,7 @@ Cons:
 - partition key should be carefully be chosen
 - more sophisticated settings
 
-3. Webhooks (Rest)
+### 3. Webhooks (Rest)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/3.jpg)
 
@@ -62,7 +62,7 @@ Cons:
 - you have to implement callback URL registering / updating logic for external systems
 - no way how to re-process old events
 
-4. Polling (Rest)
+### 4. Polling (Rest)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/4.jpg)
 
@@ -78,7 +78,7 @@ Cons:
 - high latency approach
 - no way how to re-process old events
 
-5. WS / SSE / HTTP/2.0
+### 5. WS / SSE / HTTP/2.0
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/5.jpg)
 

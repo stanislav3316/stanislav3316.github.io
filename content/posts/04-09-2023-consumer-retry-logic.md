@@ -8,7 +8,7 @@ draft: true
 >
 > This article represented my mental model at the time of writing, but I’m always iterating on it.
 
-### Consumer retry logic
+## Consumer retry logic
 
 ## Conclusion
 
