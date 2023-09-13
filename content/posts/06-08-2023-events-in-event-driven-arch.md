@@ -8,32 +8,45 @@ draft: false
 >
 > This article represented my mental model at the time of writing, but I’m always iterating on it.
 
-### Event types
-Building Event-Driven or Asynchronous architecture it's important to pay a lot of attention to events in the system.
-They are core elements of data flows, and should be designed properly and with care. Any futrher refactoring of these events will be painful and difficult - strict structure is our helper.
+## Inhabitants of Event-Driven architecture
 
-There are event types:
- - CUD events (create-update-delete, they carry information about changes of the entities (aggregates) in the system)
+In Event-Driven architecture there are two main inhabitants:
+1. commands - intention to apply some actions / changes
+2. events - what already happened in the system
+
+Building Event-Driven architecture it's important to pay a lot of attention to events in the system.
+They are core elements of data flows, and should be designed properly and with care. Any futrher refactoring of these events will be painful and difficult.
+
+There are different types of events.
+
+## 1. CUD events (create-update-delete)
+
+CUD events carry information about changes of the entities (aggregates) in the system
 
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/1.jpeg)
 
 The main reason for CUD events is streaming data through the system to have different local data replicas for local usage. It helps us to eliminate network calls and use local DB instead (warehouse can access user's data locally).
 
- - Domain events (Business events, related to a specific domain)
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/2.jpg)
-
-The domain events are about business processes and triggers. They help us to build coordination between services and accomplish business goals.
-
----
-
-### Delta or full payload
+### Delta or full payload for CDC events
 Events can carry the whole payload or delta only (changed parts only). The right choice depends on business/technical requirements and cases. Moreover, full event's payload helps us to re-play events for new services, and sometimes not to store local state because full state is in every event you have to work with.
 
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/3.jpg)
 
----
+## 2. Domain events (Business events, related to a specific domain)
 
-### Structure and event's rules
+![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/2.jpg)
+
+The domain events are about business processes and flows. They help us to build coordination between participants to accomplish business goals. Such events hold a full information about what happened in the business domain.
+
+## 3. Notification events
+
+![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/4.jpg)
+
+Notification events carry only information about event type and how to access this information (usually by making /GET request to the specified endpoint).
+
+It helps to get the latest information using provided link and may require authorization mechanisms to access the payload (for external systems, as example).
+
+## Structure and event's rules
 There are different types of events and all of them should be under constraints and follow these rules:
  - name in past tense (ReportFilled, CardExpired, ....)
  - immutable
@@ -44,9 +57,10 @@ There are different types of events and all of them should be under constraints 
 
 
 It's important to have unified structure with evolution, changeability possibilities. So, it's always better to enrich events with meta information along with data or payload block. Meta block helps us to manage, evolve events and handle them in idempotency and the right way.
+
 ```
 {
-  "data | payload": {...},
+  "payload": {...},
   "meta": {
     "created_at": ...,
     # or schema_id as ref
@@ -64,7 +78,7 @@ It's important to have unified structure with evolution, changeability possibili
 ```
 
 
-1. "data or payload" - carries event's information about what happened in the system (this block is versioning using "meta.schema")
+1. "payload" - carries event's information about what happened in the system (this block is versioning using "meta.schema")
 2. "meta.created_at" - time when event was created
 3. "meta.schema" or "meta.schema_id" - schema of the data (payload) block
 4. [optional] "meta.trace_id" - for tracing (Jaeger, ...)
@@ -73,9 +87,7 @@ It's important to have unified structure with evolution, changeability possibili
 7. [optional] "meta.parent_event_id" - parent identificator for ordering or chains
 
 
----
-
-### Anti-corruption layer
+## Anti-corruption layer
 ![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/4.jpg)
 
 When you got events from external system, different bounded context or send events outside it's important not to send events as is.
