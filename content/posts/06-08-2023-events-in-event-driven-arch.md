@@ -88,10 +88,16 @@ It's always important to have unified structure to keep up with evolution, chang
 
 ## Anti-corruption layer
 
-![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/4.jpg)
+![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/5.jpg)
 
-When you got events from external system, different bounded context or send events outside it's important not to send events as is.
-Instead, use different event's models not internal ones (to make system flexible and robust for further changes).
+When you receive events from external systems or different bounded contexts, it's important not to use received events as is.
+Instead, cast them into internal events to protect and fence your internal business logic from external changes (external system might change structure of it's events over time). It helps to make system more flexible and robust.
+
+## Open host service
+
+![!\[Alt text\](../assets/img/2023--8-06-events-in-event-driver-arch/1.jpeg)](/1/6.jpg)
+
+When your service is publishing events, it's also important to protect your consumers from business logic changes (your internal events might be changed over time) and cast internal events into external events (defined into service protocol).
 
 ## Conclusion
 - carefully approach the design of events (it's a core!)
