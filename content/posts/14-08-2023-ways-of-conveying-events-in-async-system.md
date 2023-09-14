@@ -106,21 +106,24 @@ Cons:
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/5.jpg)
 
-In WS / SSE / HTTP/2.0 case, external system or app established long living connections to receive events stream.
+In the case of WebSocket (WS), Server-Sent Events (SSE), or HTTP/2.0, external systems or applications establish long-lived connections to receive an event stream.
 
 Pros:
-- low latency approach
-- no DevOps activities
+- long-lived connections enable real-time data updates, making them ideal for applications requiring instant notifications and live data feeds
+- these technologies are designed for low-latency communication
+- implementing long-lived connections can be simpler than managing complex polling or callback mechanisms
+- no extra complexity in your architecture and operational overhead
 
 Cons:
-- you have to think over acknowledge event's logic (guarantee delivery)
-- you have to think over ping/pong messages so that conection could be closed in case of inactivity for long time
-- difficult to organise retry logic
-- difficult consumer scaling logic
+- you need to carefully consider the logic for acknowledging events to guarantee delivery
+- you need to consider implementing ping/pong messages to allow the connection to be closed in the event of prolonged inactivity
+- organizing retry logic can be challenging
+- implementing and managing long-lived connections can be more complex than traditional request-response mechanisms, especially when dealing with reconnects and error handling
+- both clients and servers must maintain open connections, which can consume resources
+- long-lived connections may encounter issues with certain network configurations, firewalls, and proxies, potentially requiring additional configuration
 
 ## Conclusion
-Each option has trade-offs to consider in you architecture and domain.
-So that you could make right choice, make sure you think over you DevOps environment, team's  expertise, business and domain restrictions.
+Each option comes with its own set of trade-offs that you should carefully evaluate within the context of your architecture and domain. To make the right choice, be sure to take into account your DevOps environment, your team's expertise, and any business or domain-specific constraints.
 
 ## Further Reading
 1. [Events in Event-Driver Architecture](https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/)
