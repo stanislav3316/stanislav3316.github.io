@@ -30,31 +30,39 @@ Pros:
 - protocol agnostic: many message brokers support multiple communication protocols (e.g., AMQP, MQTT, STOMP), making it easier to integrate diverse systems
 
 Cons:
-- it adds complexity to your architecture (requires setup, configuration, and ongoing maintenance)
+- it adds complexity to your architecture and operational overhead
 - it introduces some latency into the system due to message processing and routing
 - message broker can become a single point of failure in your system
-- developers and operations teams may need to learn how to work with the specific message broker technology
 - no way how to re-process old events (they are being deleted after processing)
-- while it can be quite tricky, it is possible to organize retry logic
-- It can be challenging to implement advanced consumer logic patterns, such as partitioning events by ID (criteria) per consumer
+- while it can be quite tricky, but it is possible to organize retry logic
+- It can be challenging to implement advanced consumer logic patterns, such as partitioning events by ID (criteria) per consumer (from single queue)
 
 ### 2. Messages log (Kafka, ...)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/2.jpg)
 
-In Topics case, server sends events to broker and broker persists events in specified topics (regarding kafka, in specified partitions too based on partition key).
+In the case of Kafka topics, the server sends events to a broker, and the broker persists these events in specified topics, and in the case of Kafka, it also distributes them to specified partitions based on the partition key.
+
 > consider use insrastructure-as-code pattern to achieve maintainability and simplicity
 
 Pros:
+- usually designed for high-throughput data streaming
+- good horizontally scalable possibilities
+- store messages persistently, which means data is not lost even if a consumer is not actively listening or already processed events
 - events can be easily re-processed (all events are persisted)
-- data inside topics can be partitioned using partition key (kafka partitions)
-- simple consumer scaling logic (based on assigment topic's partitons to different node's instances)
+- message brokers decouple producers from consumers, allowing them to work independently
+- simple consumer scaling logic based on some cryteria, as example, by entity ID per consumer (based on assigment topic's partitons to different application's instances in consumer group)
+- usually there are integrations with various data processing frameworks, making it a suitable choice for building data pipelines
 
 Cons:
-- difficult to organise retry logic (but processing can be stopped until failure would be fixed)
-- persist all received events (volume)
-- partition key should be carefully be chosen
-- more sophisticated settings
+- it adds complexity to your architecture and operational overhead
+- it introduces some latency into the system due to message processing and routing
+- message broker can become a single point of failure in your system
+- tricky to organise retry logic (but processing can be stopped until failure would be fixed)
+- persists all received events for some renetion periud (volume consuming approach)
+- partition key should be carefully chosen
+- guarantees ordering of messages within a partition but not across partitions (Achieving global ordering might be complex).
+- it is optimized for small to medium-sized messages (handling very large messages can be challenging).
 
 ### 3. Webhooks (Rest)
 
