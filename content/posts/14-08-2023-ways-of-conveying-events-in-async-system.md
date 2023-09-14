@@ -71,15 +71,17 @@ Cons:
 In Webhooks case, service sends events on specified/registered REST endpoint, so that app could process them.
 
 Pros:
-- simple publish-subscribe pattern
-- good integration pattern for external systems
-- no DevOps activities
+- implementing Webhooks is often straightforward, requiring a simple HTTP POST request to the configured endpoint
+- an effective integration pattern for external systems
+- no extra complexity in your architecture and operational overhead
 
 Cons:
-- network and external service outage cases should be covered with long retries
-- high latency approach
-- you have to implement callback URL registering / updating logic for external systems
-- no way how to re-process old events
+- webhooks rely on the availability and responsiveness of the receiver's server, making them susceptible to network issues and downtime
+- it's crucial to give careful thought to retry logic in the event of an outage of the receiver application
+- can introduce notable latency into inter-service communications
+- You need to implement logic for registering and updating callback URLs in your application
+- no method for re-processing already received events (only persist them when you get it)
+- implementing proper authentication and authorization mechanisms for Webhooks can be challenging, especially in multi-tenant or public-facing systems
 
 ### 4. Polling (Rest)
 
