@@ -61,7 +61,7 @@ Cons:
 - tricky to organise retry logic (but processing can be stopped until failure would be fixed)
 - persists all received events for some renetion periud (volume consuming approach)
 - partition key should be carefully chosen
-- guarantees ordering of messages within a partition but not across partitions (Achieving global ordering might be complex).
+- guarantees ordering of messages within a partition but not across partitions (Achieving global ordering might be complex)
 - it is optimized for small to medium-sized messages (handling very large messages can be challenging).
 
 ### 3. Webhooks (Rest)
@@ -77,7 +77,7 @@ Pros:
 
 Cons:
 - webhooks rely on the availability and responsiveness of the receiver's server, making them susceptible to network issues and downtime
-- it's crucial to give careful thought to retry logic in the event of an outage of the receiver application
+- it's crucial to give careful thought to retry logic in the event of an outage of the receiver's server
 - can introduce notable latency into inter-service communications
 - You need to implement logic for registering and updating callback URLs in your application
 - no method for re-processing already received events (only persist them when you get it)
@@ -87,17 +87,20 @@ Cons:
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/4.jpg)
 
-In polling case, external system or app periodically calls GET /events endpoint to receive the latest events.
+In the case of polling, an external system or application periodically makes GET requests to the /events endpoint to retrieve the latest events.
 
 Pros:
-- simple publish-subscribe pattern
-- good integration pattern for external systems
-- no DevOps activities
+- implementing polling is relatively simple, as it only involves making regular requests to a specific endpoint
+- the client has control over when to fetch new data, making it easy to manage data retrieval based on its specific needs
+- an effective integration pattern for external systems: polling can work with a wide range of systems and technologies
+- no extra complexity in your architecture and operational overhead
 
 Cons:
-- netfork and external service outage cases should be covered with long retries
-- high latency approach
-- no way how to re-process old events
+- cases of network and external service outages should be addressed with extended retry mechanisms
+- polling introduces latency
+- frequent polling can result in unnecessary network traffic
+- polling is not suitable for real-time applications where immediate data updates are required
+- no method for re-processing already received events (only persist them when you get it)
 
 ### 5. WS / SSE / HTTP/2.0
 
