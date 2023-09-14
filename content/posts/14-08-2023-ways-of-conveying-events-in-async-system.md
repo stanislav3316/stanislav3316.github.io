@@ -10,22 +10,33 @@ draft: false
 
 ## Events communication in Event-Driven architecture
 
+In this article we cover most popular approaches how to organize events communiction in the system.
+
 ### 1. Queus (RabbitMQ, ...)
 
 ![!\[Alt text\](../assets/img/14-08-2023-ways-of-conveying-events-in-async-system/1.jpeg)](/2/1.jpg)
 
-In queues case, service sends events to queue broker and broker can send events to all binded queus (fanous), or to only one business process queue.
+In the case of queues, the application sends events to a queue broker, which then transfers these events to all bound queues (fan out), or to a single specified queue.
+
 > consider use insrastructure-as-code pattern to achieve maintainability and simplicity
 
 Pros:
-- event is in queue until app's consumer processed it (queue doesn't persist events when they were already processed)
-- low latency approach
+- events remain in the queue until the application's consumer processes them (events being processed are deleted - clean up space)
+- quite low latency approach
 - simple publish-subscribe pattern
+- message brokers decouple producers from consumers, allowing them to work independently
+- message brokers often provide mechanisms for guaranteed message delivery and persistence
+- brokers can route messages to specific queues or topics, allowing for fine-grained control
+- protocol agnostic: many message brokers support multiple communication protocols (e.g., AMQP, MQTT, STOMP), making it easier to integrate diverse systems
 
 Cons:
-- no way how to re-process old events (they are deleting after being processed)
-- difficult to organise retry logic
-- difficult consumer scaling logic (to read events from one queue and shard event by some criteria like entity ID)
+- it adds complexity to your architecture (requires setup, configuration, and ongoing maintenance)
+- it introduces some latency into the system due to message processing and routing
+- message broker can become a single point of failure in your system
+- developers and operations teams may need to learn how to work with the specific message broker technology
+- no way how to re-process old events (they are being deleted after processing)
+- while it can be quite tricky, it is possible to organize retry logic
+- It can be challenging to implement advanced consumer logic patterns, such as partitioning events by ID (criteria) per consumer
 
 ### 2. Messages log (Kafka, ...)
 
