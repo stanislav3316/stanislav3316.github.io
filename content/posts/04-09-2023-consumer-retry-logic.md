@@ -87,6 +87,26 @@ For retrayable retryable exceptions:
 
 ![!\[Alt text\](../assets/img/04-09-2023-consumer-retry-logic/1.jpeg)](/4/1.jpg)
 
+# Example: RabbitMQ Delayed Message Plugin (for backoff)
+
+- rabbitMQ offers a Delayed Message Plugin that allows you to implement delayed message delivery with more precision.
+- this plugin introduces a new exchange type called "x-delayed-message," which retains messages in a queue until a specified delay period has passed.
+- to use this plugin, you need to install it and configure your RabbitMQ server to enable the "x-delayed-message" exchange type.
+- once configured, you can publish messages to this exchange with a delay specified in milliseconds. The messages will be held until the delay period has elapsed before being delivered to the queue.
+
+```
+#RabbitMQ Delayed Message
+// ... elided code ...
+byte[] messageBodyBytes = "delayed payload".getBytes();
+AMQP.BasicProperties.Builder props = new AMQP.BasicProperties.Builder();
+headers = new HashMap<String, Object>();
+headers.put("x-delay", 5000);
+props.headers(headers);
+channel.basicPublish("my-exchange", "", props.build(), messageBodyBytes);
+```
+
+
+
 ## Conclusion
 
 Define a retry policy that specifies the maximum number of retry attempts allowed and the delay between retries (to avoid overloading the system with retries). Adjust these parameters based on your application's needs and message importance.
