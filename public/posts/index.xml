@@ -27,10 +27,8 @@ between application and data store between application and broker So, in case of
       <guid>https://stanislav3316.github.io/posts/14-08-2023-ways-of-conveying-events-in-async-system/</guid>
       <description>ℹ️ disclaimer
 This article represented my mental model at the time of writing, but I’m always iterating on it.
-Events communication in Event-Driven architecture Queus (RabbitMQ, &amp;hellip;) In queues case, service sends events to queue broker and broker can send events to all binded queus (fanous), or to only one business process queue.
-consider use insrastructure-as-code pattern to achieve maintainability and simplicity
-Pros:
-event is in queue until app&amp;rsquo;s consumer processed it (queue doesn&amp;rsquo;t persist events when they were already processed) low latency approach simple publish-subscribe pattern Cons:</description>
+Events communication in Event-Driven architecture In this article we cover most popular approaches how to organize events communiction in the system.
+1. Queus (RabbitMQ, &amp;hellip;) In the case of queues, the application sends events to a queue broker, which then transfers these events to all bound queues (fan out), or to a single specified queue.</description>
     </item>
     
     <item>
@@ -41,8 +39,8 @@ event is in queue until app&amp;rsquo;s consumer processed it (queue doesn&amp;r
       <guid>https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/</guid>
       <description>ℹ️ disclaimer
 This article represented my mental model at the time of writing, but I’m always iterating on it.
-Introduction In Event-Driven architecture there are two main inhabitants:
-commaind - intention to apply some actions events - what already happened in the system Building Event-Driven or Asynchronous architecture it&amp;rsquo;s important to pay a lot of attention to events in the system. They are core elements of data flows, and should be designed properly and with care.</description>
+Inhabitants of Event-Driven architecture In Event-Driven architecture there are two main inhabitants:
+commands - intention to apply some actions / changes events - what already happened in the system Building Event-Driven architecture it&amp;rsquo;s important to pay a lot of attention to events in the system. They are core elements of data flows, and should be designed properly and with care.</description>
     </item>
     
   </channel>

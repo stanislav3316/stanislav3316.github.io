@@ -1,7 +1,7 @@
 ---
 title: "Consumer retry logic in Event-Driven architecture"
 date: 2023-09-04T09:03:20-08:00
-draft: true
+draft: false
 ---
 
 > **ℹ️ disclaimer**
@@ -84,6 +84,8 @@ For retrayable retryable exceptions:
 2. if it continues to fail, increment the record's 'retry' counter in the record headers and publish it to the retry topic/queue
 3. periodically, attempt to consume records (in a separate process or thread) from the retry topic/queue and proceed with trying to apply the events
 4. when the number of re-processing attempts exceeds a certain threshold (e.g., 10 times), push both the event and its correlated ones to a Dead-Letter topic/queue for manual intervention and analysis
+
+![!\[Alt text\](../assets/img/04-09-2023-consumer-retry-logic/1.jpeg)](/4/1.jpg)
 
 ## Conclusion
 
