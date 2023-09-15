@@ -20,7 +20,7 @@ There are two types of exceptions:
 
 The primary benefit of categorizing exceptions into different types is the ability to make decisions based on the specific type of exception. Retry mechanisms should only be employed for exceptions categorized as retryable during event processing
 
-# Retrayable
+### Retrayable
 1. network errors
 2. service Unavailability
 3. rate limiting
@@ -39,7 +39,7 @@ When encountering retryable exceptions, it's common to implement retry logic tha
 
 Retryable exceptions should be handled in a way that allows the consuming application to automatically recover from transient issues without manual intervention, thereby improving the robustness and reliability of event processing.
 
-# Non-Retrayable
+### Non-Retrayable
 1. data validation errors
 2. authentication and authorization failures
 3. bad request (4xx) responses form external system or services
@@ -63,7 +63,7 @@ To maintain consistency, when you retry one of the order events with a specific 
 
 ## Retry options
 
-# Stop processing
+### Stop processing
 
 At times, there is an option to halt the entire event processing in case of any errors. The system should notify the monitoring system and await manual intervention.
 
@@ -72,7 +72,7 @@ At times, there is an option to halt the entire event processing in case of any 
 3. by failing health check pod probes
 4. ...
 
-# Retry logic
+### Retry logic
 
 For non-retrayable retryable exceptions:
 1. log errors
