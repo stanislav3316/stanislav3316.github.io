@@ -52,9 +52,44 @@ Handling non-retrayable exceptions typically involves logging the error, notifyi
 
 ## Correlated events
 
+Consider an Order Service that is responsible for managing Order entities. For example, when processing an order, it might generate events like "OrderPlacedEvent," "PaymentProcessedEvent," "InventoryReservedEvent," and "ShippingScheduledEvent." Each of these events is associated `with the same order ID` to maintain the relationship.
 
+It means that these events have causal consistency and it's important to process each event in strict order.
+
+1. If `non-retrayable` exception occurs you should stop processing all subsequent events with the same entity ID to keep up with consistency
+2. If `retrayable` exception occurs you should retry not only failed event, but all subsequent events with the same entity ID to keep up with consistency
+
+To maintain consistency, when you retry one of the order events with a specific order ID, you should also trigger the retry of other related events with the same order ID. This ensures that all parts of the order processing workflow are retried together (by retrying all related events together, you maintain the integrity and consistency of the order processing workflow).
+
+## Retry options
+
+# Stop processing
+
+At times, there is an option to halt the entire event processing in case of any errors. The system should notify the monitoring system and await manual intervention.
+
+1. by restarting application pod (k8s) with alerting
+2. by producing metrics about problem
+3. by failing health check pod probes
+4. ...
+
+# Retry logic
+
+For non-retrayable retryable exceptions:
+1. log errors
+2. push this event into Deal-Letter quque with information about exception (for further analysis)
+3. push information about failed event into metrics system (business metrics like count of failed events in last minute/second ...)
+
+For retrayable retryable exceptions:
+1. you can attempt to retry the event with an in-memory backoff mechanism for 2-3 times, using short intervals between retries
+2. if it continues to fail, increment the record's 'retry' counter in the record headers and publish it to the retry topic/queue
+3. periodically, attempt to consume records (in a separate process or thread) from the retry topic/queue and proceed with trying to apply the events
+4. when the number of re-processing attempts exceeds a certain threshold (e.g., 10 times), push both the event and its correlated ones to a Dead-Letter topic/queue for manual intervention and analysis
 
 ## Conclusion
+
+Define a retry policy that specifies the maximum number of retry attempts allowed and the delay between retries (to avoid overloading the system with retries). Adjust these parameters based on your application's needs and message importance.
+
+Set up monitoring and alerting to notify you when messages are being retried frequently, which may indicate an issue that needs attention.
 
 ## Further Reading
 1. [Events in Event-Driver Architecture](https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/)
