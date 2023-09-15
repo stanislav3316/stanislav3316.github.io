@@ -10,6 +10,10 @@ draft: true
 
 ## Consumer retry logic
 
+retryable and non retryable exceptions
+
+correlated events
+
 ## Conclusion
 
 ## Further Reading
