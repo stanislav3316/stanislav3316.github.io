@@ -87,7 +87,7 @@ For retrayable retryable exceptions:
 
 ![!\[Alt text\](../assets/img/04-09-2023-consumer-retry-logic/1.jpeg)](/4/1.jpg)
 
-# Example: RabbitMQ Delayed Message Plugin (for backoff)
+## Example: RabbitMQ Delayed Message Plugin (for backoff)
 
 - rabbitMQ offers a Delayed Message Plugin that allows you to implement delayed message delivery with more precision.
 - this plugin introduces a new exchange type called "x-delayed-message," which retains messages in a queue until a specified delay period has passed.
@@ -105,7 +105,13 @@ props.headers(headers);
 channel.basicPublish("my-exchange", "", props.build(), messageBodyBytes);
 ```
 
+## Example: Kafka Delayed Messages (for backoff)
 
+Apache Kafka does not have built-in support for delayed message delivery like some other messaging systems. Kafka is designed for high-throughput, real-time event streaming, and its primary focus is on the reliable and ordered delivery of messages. However, you can implement delayed message delivery in Kafka:
+
+1. create intermediate Kafka topics where messages with future timestamps are initially published
+2. implement a separate consumer process that continuously checks the timestamps of messages in the intermediate topics (using `pause` and `resume` kafka Api methods)
+3. when a message's timestamp matches the current time or exceeds it, move the message to the target topic for further processing by other consumers.
 
 ## Conclusion
 
@@ -114,4 +120,7 @@ Define a retry policy that specifies the maximum number of retry attempts allowe
 Set up monitoring and alerting to notify you when messages are being retried frequently, which may indicate an issue that needs attention.
 
 ## Further Reading
+
 1. [Events in Event-Driver Architecture](https://stanislav3316.github.io/posts/06-08-2023-events-in-event-driven-arch/)
+2. [Retry Mechanism and Delay Queues in Apache Kafka](https://medium.com/naukri-engineering/retry-mechanism-and-delay-queues-in-apache-kafka-528a6524f722)
+3. [RabbitMQ Delayed Messages 101: How to Delay & Schedule Messages Made Easy](https://hevodata.com/learn/rabbitmq-delayed-message/#:~:text=To%20delay%20a%20message%2C%20the,to%20queues%20or%20other%20exchanges.)
