@@ -6,7 +6,20 @@
     <description>Recent content on Tech blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Aug 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Sep 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Consumer retry logic in Event-Driven architecture</title>
+      <link>https://stanislav3316.github.io/posts/04-09-2023-consumer-retry-logic/</link>
+      <pubDate>Mon, 04 Sep 2023 09:03:20 -0800</pubDate>
+      
+      <guid>https://stanislav3316.github.io/posts/04-09-2023-consumer-retry-logic/</guid>
+      <description>ℹ️ disclaimer
+This article represented my mental model at the time of writing, but I’m always iterating on it.
+Consumer retry logic When processing events from any message broker, such as RabbitMQ or Kafka, it&amp;rsquo;s essential to consider implementing retry logic to handle outages or errors effectively.
+Retrayable and Non-retrayable exceptions There are two types of exceptions:
+retrayable - you can try a little bit later, after some time to complete operation non-retrayable - this kind of exceptions can&amp;rsquo;t be fixed over time The primary benefit of categorizing exceptions into different types is the ability to make decisions based on the specific type of exception.</description>
+    </item>
+    
     <item>
       <title>Delivery guarantee for events</title>
       <link>https://stanislav3316.github.io/posts/31-08-2023-delivery-guarantee-for-events/</link>

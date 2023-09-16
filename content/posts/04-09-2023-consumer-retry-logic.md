@@ -105,6 +105,8 @@ props.headers(headers);
 channel.basicPublish("my-exchange", "", props.build(), messageBodyBytes);
 ```
 
+![!\[Alt text\](../assets/img/04-09-2023-consumer-retry-logic/1.jpeg)](/4/2.jpg)
+
 ## Example: Kafka Delayed Messages (for backoff)
 
 Apache Kafka does not have built-in support for delayed message delivery like some other messaging systems. Kafka is designed for high-throughput, real-time event streaming, and its primary focus is on the reliable and ordered delivery of messages. However, you can implement delayed message delivery in Kafka:
@@ -112,6 +114,8 @@ Apache Kafka does not have built-in support for delayed message delivery like so
 1. create intermediate Kafka topics where messages with future timestamps are initially published
 2. implement a separate consumer process that continuously checks the timestamps of messages in the intermediate topics (using `pause` and `resume` kafka Api methods)
 3. when a message's timestamp matches the current time or exceeds it, move the message to the target topic for further processing by other consumers.
+
+![!\[Alt text\](../assets/img/04-09-2023-consumer-retry-logic/1.jpeg)](/4/3.jpg)
 
 ## Conclusion
 

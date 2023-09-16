@@ -127,6 +127,22 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2>Consumer retry logic in Event-Driven architecture
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ℹ️ disclaimer
+This article represented my mental model at the time of writing, but I’m always iterating on it.
+Consumer retry logic When processing events from any message broker, such as RabbitMQ or Kafka, it’s essential to consider implementing retry logic to handle outages or errors effectively.
+Retrayable and Non-retrayable exceptions There are two types of exceptions:
+retrayable - you can try a little bit later, after some time to complete operation non-retrayable - this kind of exceptions can’t be fixed over time The primary benefit of categorizing exceptions into different types is the ability to make decisions based on the specific type of exception....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-09-04 09:03:20 -0800 -0800'>September 4, 2023</span>&nbsp;·&nbsp;5 min</footer>
+  <a class="entry-link" aria-label="post link to Consumer retry logic in Event-Driven architecture" href="https://stanislav3316.github.io/posts/04-09-2023-consumer-retry-logic/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Delivery guarantee for events
     </h2>
   </header>
