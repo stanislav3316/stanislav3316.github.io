@@ -6,7 +6,20 @@
     <description>Recent content on Tech blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Sep 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Sep 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Commands in Event-Driven architecture</title>
+      <link>https://stanislav3316.github.io/posts/16-09-2023-commands-in-event-driven-arch/</link>
+      <pubDate>Sat, 16 Sep 2023 09:03:20 -0800</pubDate>
+      
+      <guid>https://stanislav3316.github.io/posts/16-09-2023-commands-in-event-driven-arch/</guid>
+      <description>ℹ️ disclaimer
+This article represented my mental model at the time of writing, but I’m always iterating on it.
+Commands A command is an intention to do, not something that has already happened in the system. Commands provide minimal but enough information for decision-making and can be sent synchronously or asynchronously.
+Similar to events, commands should adhere to common principles and a structured format:
+use a verb-like syntax for their naming should include criteria, such as command_id for distinguishing them for idempotence should include criteria, such as command_type for applying actions based on different types (on consumer side for commandBus implementation) may include criteria, such as expected_&amp;lt;entity&amp;gt;_version for applying actions based on CAS (compare-and-swap) operations may include criteria, such as trace_id for enabling tracing capabilities &amp;hellip; As example, WithdrawUserWalletCommand:</description>
+    </item>
+    
     <item>
       <title>Consumer retry logic in Event-Driven architecture</title>
       <link>https://stanislav3316.github.io/posts/04-09-2023-consumer-retry-logic/</link>

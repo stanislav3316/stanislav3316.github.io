@@ -127,6 +127,22 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2>Commands in Event-Driven architecture
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ℹ️ disclaimer
+This article represented my mental model at the time of writing, but I’m always iterating on it.
+Commands A command is an intention to do, not something that has already happened in the system. Commands provide minimal but enough information for decision-making and can be sent synchronously or asynchronously.
+Similar to events, commands should adhere to common principles and a structured format:
+use a verb-like syntax for their naming should include criteria, such as command_id for distinguishing them for idempotence should include criteria, such as command_type for applying actions based on different types (on consumer side for commandBus implementation) may include criteria, such as expected_&lt;entity&gt;_version for applying actions based on CAS (compare-and-swap) operations may include criteria, such as trace_id for enabling tracing capabilities … As example, WithdrawUserWalletCommand:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-09-16 09:03:20 -0800 -0800'>September 16, 2023</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to Commands in Event-Driven architecture" href="https://stanislav3316.github.io/posts/16-09-2023-commands-in-event-driven-arch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Consumer retry logic in Event-Driven architecture
     </h2>
   </header>
