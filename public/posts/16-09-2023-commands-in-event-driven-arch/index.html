@@ -192,7 +192,7 @@ use a verb-like syntax for their naming should include criteria, such as command
 </blockquote>
 <h2 id="commands">Commands<a hidden class="anchor" aria-hidden="true" href="#commands">#</a></h2>
 <p>A command is an intention to do, not something that has already happened in the system. Commands provide minimal but enough information for decision-making and can be sent synchronously or asynchronously.</p>
-<p><img loading="lazy" src="/1/1.jpg" alt="![Alt text](../assets/img/16-09-2023-commands-in-event-driven-arch/1.jpeg)"  />
+<p><img loading="lazy" src="/5/1.jpg" alt="![Alt text](../assets/img/16-09-2023-commands-in-event-driven-arch/1.jpeg)"  />
 </p>
 <p>Similar to events, commands should adhere to common principles and a structured format:</p>
 <ul>
@@ -222,7 +222,7 @@ use a verb-like syntax for their naming should include criteria, such as command
 <li>&hellip;</li>
 </ul>
 <p>It&rsquo;s common for commands to return the result of their execution, such as the last entity state or some outcome.</p>
-<p><img loading="lazy" src="/1/2.jpg" alt="![Alt text](../assets/img/16-09-2023-commands-in-event-driven-arch/1.jpeg)"  />
+<p><img loading="lazy" src="/5/2.jpg" alt="![Alt text](../assets/img/16-09-2023-commands-in-event-driven-arch/1.jpeg)"  />
 </p>
 <h3 id="asynchronous-executions-of-commands">Asynchronous executions of commands<a hidden class="anchor" aria-hidden="true" href="#asynchronous-executions-of-commands">#</a></h3>
 <p>Commands also can be executed in asynchronous way via messages buses or brokers:</p>
@@ -231,7 +231,7 @@ use a verb-like syntax for their naming should include criteria, such as command
 <li>kafka</li>
 <li>&hellip;</li>
 </ul>
-<p><img loading="lazy" src="/1/3.jpg" alt="![Alt text](../assets/img/16-09-2023-commands-in-event-driven-arch/1.jpeg)"  />
+<p><img loading="lazy" src="/5/3.jpg" alt="![Alt text](../assets/img/16-09-2023-commands-in-event-driven-arch/1.jpeg)"  />
 </p>
 <p>In this scenario, the consumer may emit an event as a result of the command execution, indicating whether it was successful or not.</p>
 <h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>

@@ -6,7 +6,18 @@
     <description>Recent content on Tech blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Sep 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Sep 2023 09:03:20 -0800</lastBuildDate><atom:link href="https://stanislav3316.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Different ways of couplings</title>
+      <link>https://stanislav3316.github.io/posts/21-09-2023-different-couplings/</link>
+      <pubDate>Thu, 21 Sep 2023 09:03:20 -0800</pubDate>
+      
+      <guid>https://stanislav3316.github.io/posts/21-09-2023-different-couplings/</guid>
+      <description>ℹ️ disclaimer
+This article represented my mental model at the time of writing, but I’m always iterating on it.
+Couplings Temporal coupling Temporal coupling is a concept in software design and architecture that refers to a situation where two or more components or modules in a software system depend on each other with respect to the timing or sequence of their execution. In other words, these components are tightly coupled in terms of when they should be executed, which can lead to various issues in software development and maintenance.</description>
+    </item>
+    
     <item>
       <title>Commands in Event-Driven architecture</title>
       <link>https://stanislav3316.github.io/posts/16-09-2023-commands-in-event-driven-arch/</link>
