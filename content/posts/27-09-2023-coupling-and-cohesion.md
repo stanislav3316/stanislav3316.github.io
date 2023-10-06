@@ -12,7 +12,7 @@ draft: false
 
 ### Cohesion
 
-Cohesion is a concept that refers to the degree to which the elements (such as functions, classes, or modules) within a software component or module are related to each other and perform a specific, well-defined, and focused set of tasks. (it is a crucial principle for designing maintainable, modular, and understandable software systems)
+Cohesion is a concept that refers to the degree to which the elements (such as functions, classes, or modules) within a software component or module are related to each other and perform a specific, well-defined, and focused set of tasks (it is a crucial principle for designing maintainable, modular, and understandable software systems).
 
 ### Coupling
 

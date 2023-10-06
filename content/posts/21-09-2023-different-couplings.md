@@ -21,7 +21,7 @@ Temporal coupling is a concept in software design and architecture that refers t
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/1.jpg)
 
-### Functional coupling. 
+### Functional coupling
 
 Temporal coupling is a concept in software design and architecture that refers to a situation where two or more components or modules in a software system depend on some business logic. When we change these business logic we have to change it in all places for consistency.
 
@@ -31,7 +31,7 @@ Temporal coupling is a concept in software design and architecture that refers t
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/2.jpg)
 
-### Implementation coupling.
+### Implementation coupling
 
 Implementation coupling is a term used in software design and architecture to describe a type of coupling that occurs when different modules, components, or parts of a software system are tightly connected due to their shared implementation details. It means that these modules or components rely on specific details of each other's implementation, making them highly dependent on one another in terms of how they are coded or implemented.
 
@@ -41,7 +41,7 @@ Implementation coupling is a term used in software design and architecture to de
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/3.jpg)
 
-### Static coupling. 
+### Static coupling
 
 Static coupling refers to a type of coupling in software design and architecture where two or more components, modules, or parts of a software system are interrelated at compile time or during the static analysis phase of development. This coupling occurs because the components have dependencies that are determined at the earliest stages of the software's lifecycle, often at compile time, and are not flexible or changeable at runtime.
 
@@ -51,7 +51,7 @@ Static coupling refers to a type of coupling in software design and architecture
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/4.jpg)
 
-### Dynamic coupling. 
+### Dynamic coupling
 
 Dynamic coupling is a term used in software design and architecture to describe a type of coupling between different components, modules, or parts of a software system that occurs at runtime. In dynamic coupling, the interaction between components is determined and established while the software is running, rather than being fixed at compile time or during static analysis (it helps to find communication dependencies in the system).
 
@@ -61,7 +61,7 @@ Dynamic coupling is a term used in software design and architecture to describe 
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/5.jpg)
 
-### Afferent coupling. 
+### Afferent coupling
 
 Afferent coupling is a software metric used in software engineering and software design to quantify and measure the number of external dependencies that a particular module or component has. In simpler terms, it counts how many other modules or components depend on a specific module. Afferent coupling provides insight into the complexity and potential impact of changes to a module or component within a software system (helps to calculate `distance from the main sequence` metric).
 
@@ -69,7 +69,7 @@ Afferent coupling is a software metric used in software engineering and software
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/6.jpg)
 
-### Efferent coupling. 
+### Efferent coupling
 
 Efferent coupling is a software metric used in software engineering and software design to measure and quantify the number of external modules or components that depend on a specific module or component. In other words, efferent coupling assesses how many other parts of the software system are directly influenced or used by a particular module (helps to calculate `distance from the main sequence` metric).
 
@@ -77,7 +77,7 @@ Efferent coupling is a software metric used in software engineering and software
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/7.jpg)
 
-### Through resources coupling.
+### Through resources coupling
 
 Through resources coupling is a infractucture coupling between different elements.
 
@@ -85,7 +85,7 @@ Through resources coupling is a infractucture coupling between different element
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/8.jpg)
 
-### Semantic coupling. 
+### Semantic coupling
 
 Semantic coupling, also known as content coupling or logical coupling, is a concept in software design and architecture that describes a type of coupling between different components or modules based on the meaning or semantics of the data they exchange.
 
@@ -93,7 +93,7 @@ Semantic coupling, also known as content coupling or logical coupling, is a conc
 
 ![!\[Alt text\](../assets/img/21-09-2023-different-couplings/1.jpg)](/6/9.jpg)
 
-### Deployment coupling. 
+### Deployment coupling 
 
 Deployment coupling refers to a type of coupling in software architecture and design that occurs when different components or modules within a software system are tightly linked due to the way they are deployed or distributed across hardware or network resources. In other words, it reflects the degree to which the deployment of one component depends on the deployment of another component.
 
