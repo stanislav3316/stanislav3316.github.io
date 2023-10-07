@@ -41,7 +41,7 @@ To overcome some of these problems you can try using:
 - asynchronous communication pattern
 - local data replications pattern for local usage and so on
 
-### cyclic dependencies between components
+### Cyclic dependencies between components
 
 Cyclic dependency means that outage of one service might affect another one and vice versa, so better to break this interconnections if possible.
 Asynchronous communications patterns can help you to mitigate some consequences of cyclic dependency between components.  
