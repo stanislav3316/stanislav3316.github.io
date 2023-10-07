@@ -10,8 +10,8 @@ draft: false
 
 ## Components stability in distributed systems
 
-Understanding the stability of components is crucial before making any changes to your system. 
-Therefore, it's essential to assess a component's stability using various metrics before proceeding with any modifications. 
+Understanding the stability of components is crucial for making any changes to your system. 
+So, it's essential to assess a component's stability using various metrics before proceeding with any modifications. 
 Let's explore some of these metrics that can aid in measuring stability.
 
 ### Instability metric
@@ -21,25 +21,43 @@ It can be easily calculated `I = (outgoing) / (outgoing + incoming)`
 
 ![!\[Alt text\](../assets/img/26-09-2023-component-stability-metrics/1.jpeg)](/7/1.jpg)
 
+It's always better to keep this value as min as you can for the sake of the stability of your system (as much as you can of course).
+
 ### Chatty metric
 
-Components that excessively communicate can be highly susceptible to failures in other components, leading to a decrease in their own stability.
+Components that excessively communicative can be highly vulnerable to failures in other components, leading to a decrease in their own stability.
 
-It is caused by the following cases:
+It might be caused by the following cases:
 
-- sending commands to other components to apply some actions
-- fetching information / aggregates to complete local operations
+- sending synchronous commands to other components to apply some actions
+- fetching information / aggregates to complete local business flow
 
-In both cases there are signals to merge these components and perform these actions in local operation/transaction manners (of course it's only signals to consider, not required actions).
+![!\[Alt text\](../assets/img/26-09-2023-component-stability-metrics/1.jpeg)](/7/2.jpg)
 
-To avoid such situations you can consider using cached, asynchronous communication patterns and replication data to local usage. 
+In both cases there are signals to merge these components and perform these actions in local business/transaction flows (of course it's only signals to consider, not required actions).
+
+To overcome some of these problems you can try using: 
+- cache data pattern
+- asynchronous communication pattern
+- local data replications pattern for local usage and so on
+
+### cyclic dependencies between components
+
+Cyclic dependency means that outage of one service might affect another one and vice versa, so better to break this interconnections if possible.
+Asynchronous communications patterns can help you to mitigate some consequences of cyclic dependency between components.  
+
+![!\[Alt text\](../assets/img/26-09-2023-component-stability-metrics/1.jpeg)](/7/3.jpg)
 
 ### Transactional boundaries
 
 If there is transactional behaviour/operation inside a components it's significant signal not to split it and keep it as is within single transactional boundaries.
+One of the worst things in distributed systems is to use distributed transactions (two-phase commit etc.), better to avoid it.
+
+![!\[Alt text\](../assets/img/26-09-2023-component-stability-metrics/1.jpeg)](/7/4.jpg)
 
 ## Conclusion
 
 Before splitting components consider these metrics and keep in mind that better to have more coarse-grained services than fine-grained ones in operational and maintainability perspective.
+Meanwhile, connected components form the system and components cannot be built in isolation, so it's about trade-offs.
 
 ## Further Reading
